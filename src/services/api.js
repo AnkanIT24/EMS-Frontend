@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://ems-backend-h422.onrender.com'
+const BASE_URL = 'https://ems-backend-h422.onrender.com/api'
 
 const TOKEN_KEY = 'ems_token'
 const USER_KEY = 'ems_user'
