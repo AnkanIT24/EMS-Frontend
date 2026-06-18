@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ClipboardList, Plus, Trash2, CheckCircle, Clock, Users, Building2, Globe, Pencil, Lock } from 'lucide-react'
-import { taskService, departmentService } from '../services/api'
+import { taskService, departmentService, employeeService } from '../services/api'
 import { Card, CardHeader, CardBody } from '../components/ui/Card'
 import { Button } from '../components/ui/Button'
 import { Badge } from '../components/ui/Badge'
@@ -197,10 +197,7 @@ export function AdminTasksPage() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/employees', {
-      headers: { Authorization: `Bearer ${localStorage.getItem('ems_token')}` }
-    })
-      .then(r => r.json())
+    employeeService.getAll()
       .then(employees => setUsers(employees.map(e => ({
         id: e.userId,
         fullName: `${e.firstName} ${e.lastName}`,
